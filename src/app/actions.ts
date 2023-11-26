@@ -220,6 +220,10 @@ export async function uploadFromYouTube({
 
       const buffer = Buffer.concat(chunks);
 
+      if (buffer.length > 10 * 1024 * 1024) {
+            return { failure: "Song size too big" };
+      }
+
       const key = crypto.randomBytes(32).toString("hex");
 
       const data = await s3.send(new PutObjectCommand({
@@ -257,6 +261,8 @@ export async function uploadFromYouTube({
             })
             .returning({ id: songs.id })
             .then((res) => res[0].id);
+
+      revalidatePath("/");
 
       return { url, songId, coverArtId, thumbnailUrl };
 }
