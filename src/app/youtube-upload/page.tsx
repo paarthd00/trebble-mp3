@@ -2,11 +2,8 @@
 import React, { useState } from "react";
 import { uploadFromYouTube } from "../actions";
 import Image from "next/image";
-import { auth } from "@/auth";
-import { redirect } from "next/navigation";
 
 export default function YoutubeUpload() {
-
       const [thumbnailUrl, setThumbnailUrl] = useState('');
       const [songUrl, setSongUrl] = useState('');
       const [youtubeUrl, setYoutubeUrl] = useState('');
@@ -15,10 +12,6 @@ export default function YoutubeUpload() {
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
 
-            const session = await auth()
-            if (!session?.user) {
-                  redirect('/api/auth/signin')
-            }
             if (!youtubeUrl) {
                   return;
             }
