@@ -2,8 +2,15 @@
 import React, { useState } from "react";
 import { uploadFromYouTube } from "../actions";
 import Image from "next/image";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-export default function YoutubeUpload() {
+export default async function YoutubeUpload() {
+      const session = await auth()
+      if (!session?.user) {
+            redirect('/api/auth/signin')
+      }
+
       const [thumbnailUrl, setThumbnailUrl] = useState('');
       const [songUrl, setSongUrl] = useState('');
       const [youtubeUrl, setYoutubeUrl] = useState('');
