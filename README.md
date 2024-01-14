@@ -1,6 +1,6 @@
 # Trebble-MP3
 
-[Vercel-Link](https://trebble-mp3.vercel.app/)
+[Vercel-Link](https://trebble-mp3-git-master-paarthd00.vercel.app/)
 
 Trebble-MP3 is a one-stop solution for all music lovers. It allows users to have all their music in one place, with recommendations from Spotify using Algolia. Users can upload music manually or from a YouTube URL. All the songs and cover art are uploaded to S3.
 
